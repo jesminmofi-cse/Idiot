@@ -29,7 +29,17 @@ const BookTrackerPage = () => {
       console.error('Failed to fetch books:', err.message);
     }
   };
-
+/*   const handleDeleteBook=async(id)=>{
+    try{
+      await axios.delete(`/api/books.${id}`,{
+        headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}
+      });
+      fetchBooks();
+    }catch(err){
+      console.error('Error deleting book:',err.message);
+    }
+  };
+ */
   const uploadImage = async () => {
     if (!imageFile) return '';
     const formData = new FormData();
@@ -105,7 +115,19 @@ const BookTrackerPage = () => {
         <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} />
         <button type="submit" disabled={loading}>{loading ? 'Adding...' : 'Add Book'}</button>
       </form>
-
+      {/* <div className='book-info'>
+        <h3>{book.title}</h3>
+        {book.status && <p>Status: {book.status}</p>}
+  {book.rating && <p>Rating: {'⭐'.repeat(book.rating)}</p>}
+  {book.tags?.length > 0 && <p>Tags: {book.tags.join(', ')}</p>}
+  {book.startedDate && <p>Started: {new Date(book.startedDate).toLocaleDateString()}</p>}
+  {book.finishedDate && <p>Finished: {new Date(book.finishedDate).toLocaleDateString()}</p>}
+  {book.review && <p>Notes: {book.review}</p>}
+   {book.summary && <p className="summary">Summary: {book.summary}</p>}
+        <button className='delete-btn' onClick={()=>handleDeleteBook(book._id)}>
+        Delete
+      </button>
+      </div> */}
       <div className="booktracker-items">
         {books.length === 0 ? (
           <p className="empty-msg">No books tracked yet. Add your first read! 📖</p>
