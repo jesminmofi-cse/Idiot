@@ -7,7 +7,7 @@ const app = express();
 
 //  CORS
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://idiot-smoky.vercel.app',
   credentials: true
 }));
 
