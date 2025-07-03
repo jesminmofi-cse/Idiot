@@ -16,6 +16,8 @@ import BookTrackerPage from './Planner/BookTrackPage';
 import CalendarView from './Planner/CalendarView';
 import MeditationPage from './Planner/MeditationPage';
 import BreathingPage from './Planner/BreathingPage';
+import JuiceRecommendations from './Planner/JuiceRecommendation';
+import PhotoJournalPage from './Planner/PhotoJournalPage';
 function App() {
   const isLoggedIn = !!localStorage.getItem('token');
 
@@ -32,12 +34,14 @@ function App() {
         <Route path="/task" element={isLoggedIn ? <TaskPage /> : <Navigate to="/" />} />
         <Route path="/mood" element={isLoggedIn ? <MoodPage /> : <Navigate to="/" />} />
         <Route path="/journal" element={isLoggedIn ? <JournalPage /> : <Navigate to="/" />} />
+        <Route path='/photo' element ={isLoggedIn ? <PhotoJournalPage/>:<Navigate to='/'/>}/>
         <Route path="/gratitude" element={isLoggedIn ? <GratitudePage /> : <Navigate to="/" />} />
         <Route path="/books" element={isLoggedIn ? <BookTrackerPage /> : <Navigate to="/" />} />
         <Route path="/period" element={isLoggedIn ? <PeriodTrackerPage /> : <Navigate to="/" />} />
         <Route path="/wishlist" element={isLoggedIn ? <WishPage /> : <Navigate to="/" />} />
         <Route path="/meditation" element={isLoggedIn ? <MeditationPage/>:<Navigate to='/'/>}/> 
-        <Route path='/breathing'element={isLoggedIn ?<BreathingPage/>:<Navigate to='/'/>}/>{/* ✅ FIXED */}
+        <Route path='/breathing'element={isLoggedIn ?<BreathingPage/>:<Navigate to='/'/>}/>
+        <Route path='/juice'element={isLoggedIn ?<JuiceRecommendations/>:<Navigate to='/'/>}/>
       </Routes>
     </Router>
   );

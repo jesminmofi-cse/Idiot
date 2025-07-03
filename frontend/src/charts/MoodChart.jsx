@@ -2,21 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend} from 'chart.js';
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
-
 const MoodChart = () => {
   const [moodLogs, setMoodLogs] = useState([]);
   const token = localStorage.getItem('token');
-
   useEffect(() => {
     const fetchMoodLogs = async () => {
       try {
@@ -27,12 +17,9 @@ const MoodChart = () => {
         setMoodLogs(res.data);
       } catch (err) {
         console.error('Failed to fetch mood data:', err);
-      }
-    };
-
+      }};
     fetchMoodLogs();
   }, [token]);
-
   const pastelColors = {
     happy: '#fce1e4',
     sad: '#cde2f2',
@@ -41,7 +28,6 @@ const MoodChart = () => {
     excited: '#d5f4e6',
     anxious: '#f5e1fd',
   };
-
   const chartData = () => {
     const moodCount = {
       happy: 0,
@@ -51,17 +37,13 @@ const MoodChart = () => {
       excited: 0,
       anxious: 0,
     };
-
     moodLogs.forEach((log) => {
       if (moodCount[log.mood] !== undefined) {
         moodCount[log.mood]++;
-      }
-    });
-
+      }});
     const labels = Object.keys(moodCount);
     const data = Object.values(moodCount);
     const backgroundColors = labels.map((m) => pastelColors[m]);
-
     return {
       labels,
       datasets: [
@@ -74,7 +56,6 @@ const MoodChart = () => {
       ],
     };
   };
-
   const chartOptions = {
     responsive: true,
     plugins: {

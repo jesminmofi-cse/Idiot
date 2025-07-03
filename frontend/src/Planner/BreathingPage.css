@@ -1,8 +1,12 @@
 .breathing-container {
   text-align: center;
   padding: 2rem;
-}
+  background-image: url('https://www.icegif.com/wp-content/uploads/2022/01/icegif-1024.gif');
 
+}
+.body{
+  background-image: url('https://media.giphy.com/media/Q9Ft3xEhO0bdK/giphy.gif');
+}
 .phase {
   font-size: 2rem;
   margin: 1rem 0;

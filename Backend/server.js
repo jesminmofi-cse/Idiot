@@ -61,5 +61,8 @@ app.use('/api/breathing', breathingRoutes);
 const bookRoutes = require('./routes/bookRoutes');
 app.use('/api/books', bookRoutes);
 
+const photoRoutes= require('./routes/photoRoutes');
+app.use('/api/photos', photoRoutes);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

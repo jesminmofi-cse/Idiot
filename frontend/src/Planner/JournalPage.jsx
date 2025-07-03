@@ -13,13 +13,11 @@ const JournalPage = () => {
       const res = await axios.get('/api/journal', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      });
+        }});
       setEntries(res.data);
     } catch (err) {
       console.error('Error fetching journal entries:', err.message);
-    }
-  };
+    }};
 
   useEffect(() => {
     fetchEntries();
@@ -41,32 +39,21 @@ const JournalPage = () => {
       );
       setContent('');
       setDate('');
-      fetchEntries(); // Refresh after submitting
+      fetchEntries();
     } catch (err) {
       console.error('Error saving entry:', err.message);
     }
   };
-
   return (
     <div className="journal-container">
       <h2 className="journal-title">🧡 Dear Diary</h2>
       <form className="journal-form" onSubmit={handleSubmit}>
         <label>Date:</label>
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
         <label>Your thoughts:</label>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          rows="5"
-          placeholder="Write your heart out..."
-        ></textarea>
+        <textarea value={content} onChange={(e) => setContent(e.target.value)} rows="5"placeholder="Write your heart out..."></textarea>
         <button type="submit">Save Entry</button>
       </form>
-
       <div className="journal-entries">
         <h3>Previous Entries</h3>
         {entries.map((entry) => (

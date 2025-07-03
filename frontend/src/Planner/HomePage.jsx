@@ -1,7 +1,6 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import './HomePage.css';
-
 import MoodChart from '../charts/MoodChart';
 import SleepChart from '../charts/SleepChart';
 import YogaChart from '../charts/YogaChart';
@@ -13,10 +12,7 @@ const HomePage = () => {
             <Sidebar />
             <div className="main-content">
                 <h2 className="dashboard-title">Your Activity Dashboard</h2>
-                <p className="dashboard-subtitle">
-                    Welcome to Chroniclely! Here you can manage your journal entries, plan your day, and reflect on your progress.
-                </p>
-
+                <p className="dashboard-subtitle"> Welcome to Chroniclely! Here you can manage your journal entries, plan your day, and reflect on your progress.</p>
                 <div className="graph-section">
                     <MoodChart />
                     <SleepChart />
@@ -27,5 +23,4 @@ const HomePage = () => {
         </div>
     );
 };
-
 export default HomePage;
