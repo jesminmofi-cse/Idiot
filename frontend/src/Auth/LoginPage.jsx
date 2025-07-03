@@ -11,24 +11,25 @@ const LoginPage = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post('https://idiot-xtgi.onrender.com/api/auth/login', formData);
+    const { token, username } = res.data;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post('https://idiot-xtgi.onrender.com/api/auth/login', formData);
-      const { token, username } = res.data;
-
-      if (token) {
-        localStorage.setItem('token', token);
-        localStorage.setItem('username', username);
-        navigate('/home');
-      } else {
-        throw new Error('Invalid token received');
-      }
-    } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please try again.');
+    if (token) {
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+      navigate('/home');
+      window.location.reload(); // THIS LINE forces the app to check localStorage again
+    } else {
+      throw new Error('Invalid token received');
     }
-  };
+  } catch (err) {
+    setError(err.response?.data?.message || 'Login failed. Please try again.');
+  }
+};
+
 
   return (
     <div className="auth-container">
