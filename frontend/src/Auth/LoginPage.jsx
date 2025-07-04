@@ -21,7 +21,7 @@ const handleSubmit = async (e) => {
       localStorage.setItem('token', token);
       localStorage.setItem('username', username);
       navigate('/home');
-      window.location.reload(); // THIS LINE forces the app to check localStorage again
+    
     } else {
       throw new Error('Invalid token received');
     }
